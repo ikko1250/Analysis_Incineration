@@ -134,66 +134,45 @@ print(f"  年間発熱量: {filtered_annual_heat.min():.2e} - {filtered_annual_h
 print(f"  利用率: {filtered_utilization_rate.min():.4f} - {filtered_utilization_rate.max():.4f}")
 print(f"  低位発熱量: {filtered_low_heat_value.min():.2f} - {filtered_low_heat_value.max():.2f} kJ/kg")
 
-# プロット作成（外れ値除去前と除去後を比較）
-plt.figure(figsize=(16, 12))
+# 計算結果をCSVファイルに出力（外れ値除去前）
+valid_indices = valid_mask[valid_mask].index
 
-# 外れ値除去前の散布図
-plt.subplot(3, 2, 1)
-plt.scatter(valid_annual_heat, valid_utilization_rate, alpha=0.6, color='red', label='All data')
-plt.xlabel('Annual Heat Generation (MJ)')
-plt.ylabel('Utilization Rate')
-plt.title('Before Outlier Removal')
-plt.grid(True, alpha=0.3)
-plt.legend()
+output_df_all = pd.DataFrame({
+    '都道府県名': df.iloc[valid_indices, 0].values,
+    '地方公共団体名': df.iloc[valid_indices, 3].values, 
+    '施設名称': df.iloc[valid_indices, 4].values,
+    '年間処理量_t': df.iloc[valid_indices, 5].values,
+    '低位発熱量_kJ_per_kg': valid_low_heat_final.values,
+    '年間発熱量_MJ': valid_annual_heat.values,
+    '余熱利用量_MJ': valid_heat_utilization.values,
+    '余熱利用率': valid_utilization_rate.values
+})
 
-# 外れ値除去後の散布図
-plt.subplot(3, 2, 2)
-plt.scatter(filtered_annual_heat, filtered_utilization_rate, alpha=0.6, color='blue', label='Filtered data')
-plt.xlabel('Annual Heat Generation (MJ)')
-plt.ylabel('Utilization Rate')
-plt.title('After Outlier Removal (1.5σ)')
-plt.grid(True, alpha=0.3)
-plt.legend()
+# 外れ値除去後のデータをCSVファイルに出力
+filtered_indices = valid_indices[outlier_removed_mask]
 
-# 外れ値除去前の対数スケール
-plt.subplot(3, 2, 3)
-plt.scatter(valid_annual_heat, valid_utilization_rate, alpha=0.6, color='red')
-plt.xlabel('Annual Heat Generation (MJ)')
-plt.ylabel('Utilization Rate')
-plt.title('Before Outlier Removal (Log Scale)')
-plt.xscale('log')
-plt.grid(True, alpha=0.3)
+output_df_filtered = pd.DataFrame({
+    '都道府県名': df.iloc[filtered_indices, 0].values,
+    '地方公共団体名': df.iloc[filtered_indices, 3].values, 
+    '施設名称': df.iloc[filtered_indices, 4].values,
+    '年間処理量_t': df.iloc[filtered_indices, 5].values,
+    '低位発熱量_kJ_per_kg': filtered_low_heat_value.values,
+    '年間発熱量_MJ': filtered_annual_heat.values,
+    '余熱利用量_MJ': filtered_heat_utilization.values,
+    '余熱利用率': filtered_utilization_rate.values
+})
 
-# 外れ値除去後の対数スケール
-plt.subplot(3, 2, 4)
-plt.scatter(filtered_annual_heat, filtered_utilization_rate, alpha=0.6, color='blue')
-plt.xlabel('Annual Heat Generation (MJ)')
-plt.ylabel('Utilization Rate')
-plt.title('After Outlier Removal (Log Scale)')
-plt.xscale('log')
-plt.grid(True, alpha=0.3)
+# CSVファイルに出力
+output_csv_path_all = '/home/ubuntu/cur/program/Analyisis_incineration/result/heat_utilization_results_all.csv'
+output_csv_path_filtered = '/home/ubuntu/cur/program/Analyisis_incineration/result/heat_utilization_results_filtered.csv'
 
-# 年間発熱量のヒストグラム比較
-plt.subplot(3, 2, 5)
-plt.hist(valid_annual_heat, bins=30, alpha=0.5, color='red', label='Before', edgecolor='black')
-plt.hist(filtered_annual_heat, bins=30, alpha=0.5, color='blue', label='After', edgecolor='black')
-plt.xlabel('Annual Heat Generation (MJ)')
-plt.ylabel('Frequency')
-plt.title('Heat Generation Distribution')
-plt.legend()
-plt.grid(True, alpha=0.3)
+output_df_all.to_csv(output_csv_path_all, index=False, encoding='utf-8-sig')
+output_df_filtered.to_csv(output_csv_path_filtered, index=False, encoding='utf-8-sig')
 
-# 利用率のヒストグラム（After のみ）
-plt.subplot(3, 2, 6)
-plt.hist(filtered_utilization_rate, bins=30, alpha=0.7, color='blue', edgecolor='black')
-plt.xlabel('Utilization Rate')
-plt.ylabel('Frequency')
-plt.title('Utilization Rate Distribution (After Outlier Removal)')
-plt.grid(True, alpha=0.3)
-
-plt.tight_layout()
-plt.savefig('/home/ubuntu/cur/program/Analyisis_incineration/result/heat_utilization_analysis.png', dpi=300, bbox_inches='tight')
-plt.show()
+print(f"\n全データを {output_csv_path_all} に出力しました。")
+print(f"出力データ数: {len(output_df_all)} 件")
+print(f"\n外れ値除去後データを {output_csv_path_filtered} に出力しました。")
+print(f"出力データ数: {len(output_df_filtered)} 件")
 
 # 計算結果をCSVファイルに出力（外れ値除去前）
 valid_indices = valid_mask[valid_mask].index
@@ -361,3 +340,98 @@ else:
     for i, col in enumerate(df.columns):
         if any(keyword in col for keyword in ['蒸気', '発電', '利用']):
             print(f"  {i+1}: {col}")
+
+# 余熱利用の状況による分類
+# カラムインデックス（0ベース）：27-33が余熱利用の状況
+# 28: 余熱利用の状況_場内温水 (index 27)
+# 29: 余熱利用の状況_場内蒸気 (index 28)
+# 30: 余熱利用の状況_発電（場内利用） (index 29)
+# 31: 余熱利用の状況_場外温水 (index 30)
+# 32: 余熱利用の状況_場外蒸気 (index 31)
+# 33: 余熱利用の状況_発電（場外利用） (index 32)
+
+# 各分類の条件を定義
+hot_water_steam_mask = ((~df.iloc[filtered_indices, 27].isnull()) & (df.iloc[filtered_indices, 27] != '')) | \
+                       ((~df.iloc[filtered_indices, 28].isnull()) & (df.iloc[filtered_indices, 28] != ''))
+
+power_mask = ((~df.iloc[filtered_indices, 29].isnull()) & (df.iloc[filtered_indices, 29] != '')) | \
+             ((~df.iloc[filtered_indices, 32].isnull()) & (df.iloc[filtered_indices, 32] != ''))
+
+external_heat_mask = ((~df.iloc[filtered_indices, 30].isnull()) & (df.iloc[filtered_indices, 30] != '')) | \
+                     ((~df.iloc[filtered_indices, 31].isnull()) & (df.iloc[filtered_indices, 31] != ''))
+
+# 分類データの準備
+categories = ['Hot Water/Steam (28,29)', 'Power Generation (30,33)', 'External Heat (31,32)']
+category_masks = [hot_water_steam_mask, power_mask, external_heat_mask]
+colors = ['red', 'green', 'blue']
+
+print(f"\n=== 余熱利用状況による分類結果 ===")
+print(f"総施設数（外れ値除去後）: {len(filtered_annual_heat)}")
+for i, (cat, mask) in enumerate(zip(categories, category_masks)):
+    print(f"{cat}: {mask.sum()} 施設 ({mask.sum()/len(filtered_annual_heat)*100:.1f}%)")
+
+# プロット作成（縦3行 × 横5列）
+plt.figure(figsize=(25, 18))
+
+for row, (category, mask, color) in enumerate(zip(categories, category_masks, colors)):
+    # データの抽出
+    cat_annual_heat = filtered_annual_heat[mask]
+    cat_utilization_rate = filtered_utilization_rate[mask]
+    
+    # 列1: 外れ値除去前の散布図（全データ）
+    plt.subplot(3, 5, row*5 + 1)
+    plt.scatter(valid_annual_heat, valid_utilization_rate, alpha=0.3, color='lightgray', label='All data')
+    plt.scatter(cat_annual_heat, cat_utilization_rate, alpha=0.6, color=color, label=category)
+    plt.xlabel('Annual Heat Generation (MJ)')
+    plt.ylabel('Utilization Rate')
+    plt.title(f'{category}\nBefore Outlier Removal')
+    plt.grid(True, alpha=0.3)
+    plt.legend()
+
+    # 列2: 外れ値除去後の散布図
+    plt.subplot(3, 5, row*5 + 2)
+    plt.scatter(filtered_annual_heat, filtered_utilization_rate, alpha=0.3, color='lightgray', label='All filtered')
+    plt.scatter(cat_annual_heat, cat_utilization_rate, alpha=0.6, color=color, label=category)
+    plt.xlabel('Annual Heat Generation (MJ)')
+    plt.ylabel('Utilization Rate')
+    plt.title(f'{category}\nAfter Outlier Removal')
+    plt.grid(True, alpha=0.3)
+    plt.legend()
+
+    # 列3: 外れ値除去後の散布図（通常スケール）
+    plt.subplot(3, 5, row*5 + 3)
+    plt.scatter(cat_annual_heat, cat_utilization_rate, alpha=0.6, color=color)
+    plt.xlabel('Annual Heat Generation (MJ)')
+    plt.ylabel('Utilization Rate')
+    plt.title(f'{category}\nAfter Removal (Normal Scale)')
+    plt.grid(True, alpha=0.3)
+
+    # 列4: 外れ値除去後の散布図（対数スケール）
+    plt.subplot(3, 5, row*5 + 4)
+    plt.scatter(cat_annual_heat, cat_utilization_rate, alpha=0.6, color=color)
+    plt.xlabel('Annual Heat Generation (MJ)')
+    plt.ylabel('Utilization Rate')
+    plt.title(f'{category}\nAfter Removal (Log Scale)')
+    plt.xscale('log')
+    plt.grid(True, alpha=0.3)
+
+    # 列5: 利用率のヒストグラム
+    plt.subplot(3, 5, row*5 + 5)
+    plt.hist(cat_utilization_rate, bins=20, alpha=0.7, color=color, edgecolor='black')
+    plt.xlabel('Utilization Rate')
+    plt.ylabel('Frequency')
+    plt.title(f'{category}\nUtilization Rate Distribution')
+    plt.grid(True, alpha=0.3)
+
+    # 統計情報の表示
+    if len(cat_annual_heat) > 0:
+        print(f"\n=== {category} 統計情報 ===")
+        print(f"施設数: {len(cat_annual_heat)}")
+        print(f"年間発熱量平均: {cat_annual_heat.mean():.2e} MJ")
+        print(f"利用率平均: {cat_utilization_rate.mean():.4f}")
+        print(f"利用率中央値: {cat_utilization_rate.median():.4f}")
+        print(f"利用率標準偏差: {cat_utilization_rate.std():.4f}")
+
+plt.tight_layout()
+plt.savefig('/home/ubuntu/cur/program/Analyisis_incineration/result/heat_utilization_analysis.png', dpi=300, bbox_inches='tight')
+plt.show()
