@@ -4,11 +4,11 @@ import matplotlib.pyplot as plt
 import matplotlib as mpl
 
 # 日本語フォントの設定
-mpl.rcParams['font.family'] = 'DejaVu Sans'
+mpl.rcParams['font.family'] = 'DejaVu Sans, M+ 1C'
 plt.rcParams['font.size'] = 12
 
 # CSVファイルを読み込み
-df = pd.read_csv('/home/ubuntu/cur/univ7/ゼミナール/2022_1焼却施設.csv', encoding='utf-8')
+df = pd.read_csv('/home/ubuntu/cur/program/Analyisis_incineration/2022_1焼却施設.csv', encoding='utf-8')
 
 print("データの形状:", df.shape)
 print("\nカラム名:")
@@ -192,7 +192,7 @@ plt.title('Utilization Rate Distribution (After Outlier Removal)')
 plt.grid(True, alpha=0.3)
 
 plt.tight_layout()
-plt.savefig('/home/ubuntu/cur/univ7/ゼミナール/heat_utilization_analysis.png', dpi=300, bbox_inches='tight')
+plt.savefig('/home/ubuntu/cur/program/Analyisis_incineration/result/heat_utilization_analysis.png', dpi=300, bbox_inches='tight')
 plt.show()
 
 # 計算結果をCSVファイルに出力（外れ値除去前）
@@ -224,8 +224,8 @@ output_df_filtered = pd.DataFrame({
 })
 
 # CSVファイルに出力
-output_csv_path_all = '/home/ubuntu/cur/univ7/ゼミナール/heat_utilization_results_all.csv'
-output_csv_path_filtered = '/home/ubuntu/cur/univ7/ゼミナール/heat_utilization_results_filtered.csv'
+output_csv_path_all = '/home/ubuntu/cur/program/Analyisis_incineration/result/heat_utilization_results_all.csv'
+output_csv_path_filtered = '/home/ubuntu/cur/program/Analyisis_incineration/result/heat_utilization_results_filtered.csv'
 
 output_df_all.to_csv(output_csv_path_all, index=False, encoding='utf-8-sig')
 output_df_filtered.to_csv(output_csv_path_filtered, index=False, encoding='utf-8-sig')
