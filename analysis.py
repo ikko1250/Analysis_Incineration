@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib as mpl
+from scipy.stats import pearsonr
 
 # 日本語フォントの設定
 mpl.rcParams['font.family'] = 'DejaVu Sans, M+ 1C'
@@ -403,7 +404,12 @@ for row, (category, mask, color) in enumerate(zip(categories, category_masks, co
     plt.scatter(cat_annual_heat, cat_utilization_rate, alpha=0.6, color=color)
     plt.xlabel('Annual Heat Generation (MJ)')
     plt.ylabel('Utilization Rate')
-    plt.title(f'{category}\nAfter Removal (Normal Scale)')
+    
+    if len(cat_annual_heat) > 1 and len(cat_utilization_rate) > 1:
+        corr, p_value = pearsonr(cat_annual_heat, cat_utilization_rate)
+        plt.title(f'{category}\nAfter Removal (Normal Scale)\nCorr: {corr:.2f}, P: {p_value:.3f}')
+    else:
+        plt.title(f'{category}\nAfter Removal (Normal Scale)')
     plt.grid(True, alpha=0.3)
 
     # 列4: 外れ値除去後の散布図（対数スケール）
@@ -411,7 +417,11 @@ for row, (category, mask, color) in enumerate(zip(categories, category_masks, co
     plt.scatter(cat_annual_heat, cat_utilization_rate, alpha=0.6, color=color)
     plt.xlabel('Annual Heat Generation (MJ)')
     plt.ylabel('Utilization Rate')
-    plt.title(f'{category}\nAfter Removal (Log Scale)')
+    if len(cat_annual_heat) > 1 and len(cat_utilization_rate) > 1:
+        corr, p_value = pearsonr(cat_annual_heat, cat_utilization_rate)
+        plt.title(f'{category}\nAfter Removal (Log Scale)\nCorr: {corr:.2f}, P: {p_value:.3f}')
+    else:
+        plt.title(f'{category}\nAfter Removal (Log Scale)')
     plt.xscale('log')
     plt.grid(True, alpha=0.3)
 
