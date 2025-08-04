@@ -166,9 +166,9 @@ def analyze_lcv(file_path):
         plt.xlabel('施設全体の処理能力 (t/日)')
         plt.ylabel('低位発熱量 (実測値) (kJ/kg)')
         plt.grid(True)
-        plt.savefig('lcv_vs_capacity.png')
+        plt.savefig('result/lcv_vs_capacity.png')
         plt.close()
-        print("グラフ 'lcv_vs_capacity.png' を保存しました。")
+        print("グラフ 'result/lcv_vs_capacity.png' を保存しました。")
         print(f"処理能力との相関: r = {correlation_capacity:.3f}, p = {p_display_capacity} {significance_capacity}")
         print()
 
@@ -201,9 +201,9 @@ def analyze_lcv(file_path):
         plt.xlabel('稼働年数 (年)')
         plt.ylabel('低位発熱量 (実測値) (kJ/kg)')
         plt.grid(True)
-        plt.savefig('lcv_vs_years.png')
+        plt.savefig('result/lcv_vs_years.png')
         plt.close()
-        print("グラフ 'lcv_vs_years.png' を保存しました。")
+        print("グラフ 'result/lcv_vs_years.png' を保存しました。")
         print(f"稼働年数との相関: r = {correlation_years:.3f}, p = {p_display_years} {significance_years}")
         print()
 
