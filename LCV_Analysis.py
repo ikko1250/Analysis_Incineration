@@ -162,9 +162,9 @@ def analyze_lcv(file_path):
         else:
             p_display_capacity = f"{p_value_capacity:.3f}"
         
-        plt.title(f'低位発熱量 vs 施設全体の処理能力\n(相関係数: {correlation_capacity:.3f}, P値: {p_display_capacity} {significance_capacity})')
-        plt.xlabel('施設全体の処理能力 (t/日)')
-        plt.ylabel('低位発熱量 (実測値) (kJ/kg)')
+        plt.title(f'Figure 4: Lower Calorific Value vs. Total Facility Processing Capacity\n(Correlation coefficient: {correlation_capacity:.3f}, p-value: {p_display_capacity} {significance_capacity})')
+        plt.xlabel('Total Facility Processing Capacity (t/day)')
+        plt.ylabel('Lower Calorific Value (Measured Value) (kJ/kg)')
         plt.grid(True)
         plt.savefig('result/lcv_vs_capacity.png')
         plt.close()
@@ -197,7 +197,7 @@ def analyze_lcv(file_path):
         else:
             p_display_years = f"{p_value_years:.3f}"
         
-        plt.title(f'低位発熱量 vs 稼働年数\n(相関係数: {correlation_years:.3f}, P値: {p_display_years} {significance_years})')
+        plt.title(f'図4: 低位発熱量 vs 稼働年数\n(相関係数: {correlation_years:.3f}, P値: {p_display_years} {significance_years})')
         plt.xlabel('稼働年数 (年)')
         plt.ylabel('低位発熱量 (実測値) (kJ/kg)')
         plt.grid(True)
