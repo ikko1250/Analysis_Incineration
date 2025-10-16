@@ -1,0 +1,200 @@
+{
+  "facility": {
+    "name*": "Termovalorizzatore di Borsano",
+    "aliases": ["Impianto di termovalorizzazione di Borsano", "Inceneritore di Busto Arsizio"],
+    "location*": {
+      "address*": "Strada Comunale per Arconate 121, 21052 Busto Arsizio (VA), Lombardia, Italia",
+      "municipality*": "Busto Arsizio (VA)",
+      "coordinates": {"lat": 45.6139, "lon": 8.8472}
+    },
+    "owner*": "NEUTALIA S.R.L.",
+    "operator*": "NEUTALIA S.R.L."
+  },
+  "contractors*": {
+    "pmc*": null,
+    "general_contractor": null,
+    "consortium_ati": null,
+    "architect": null,
+    "notes": [
+      "2000年稼働の“新”プラント（旧ACCAMの更新）だが、当時のEPC/PMCの公式特定情報は公開資料で確認できず（AIA・EMAS・事業者年報いずれも未記載）。",
+      "2022年に2基のタービンを復旧（総額約360万EUR）した旨の事業者発表あり（建設EPCとは別件の改修）。"
+    ]
+  },
+  "process*": {
+    "incineration_type*": "移動式ストーカ炉（griglie mobili）、2ライン",
+    "authorized_waste_throughput*": {
+      "total_tph": null,
+      "total_tpd*": 301.4
+    },
+    "generator_rating*": {
+      "apparent_power_MVA*": null,
+      "rated_power_MW": 10.2
+    },
+    "remarks": [
+      "事業者説明では年処理能力最大110,000 t/年、発電約10.2 MW、蒸気条件 380°C・40 bar。",
+      "2022年12月の復旧後、発電“可能”容量を11 MWまで引き上げたとする発表あり（実効定格は10.2 MWを主引用）。"
+    ]
+  },
+  "annual_performance*": {
+    "waste_incinerated_tonnes*": 97800,
+    "electricity_generated*": {
+      "mwh*": 55142,
+      "kwh": 55142300
+    },
+    "heat_supplied*": {
+      "mwh": null,
+      "gj*": null
+    },
+    "avg_operational_assumption": {
+      "utilization_factor": null,
+      "operating_hours_per_year": null,
+      "implied_daily_throughput_tpd": 347.0,
+      "energy_efficiency_R1": null
+    },
+    "year": {
+      "primary": 2024,
+      "notes": ["2024年の電力量は確定値（事業者公表）。焼却量は事業者提示のkWh/tからの整合値およびグラフ（97.8 kton）で裏付け。"]
+    }
+  },
+  "district_heating*": {
+    "operator*": "AGESP Energia S.r.l.（Busto Arsizio）、AMGA Legnano S.p.A.（Legnano）",
+    "recipients_examples*": [
+      "Busto Arsizio市内の既設地域熱供給ネットワーク（AGESP Energia）",
+      "Legnano市・Castellanza市の一部需要家（AMGA/Acinque系ネットワーク、将来接続計画）",
+      "公共施設・学校・病院・集合住宅（500戸相当を先行想定）"
+    ]
+  },
+  "construction_total_cost*": {
+    "amount": 88.0,
+    "currency": "EUR",
+    "year_of_cost": 2000,
+    "notes": "2000年稼働の現行プラント建設総工費の公式公表値は見当たらず。欧州の一般的CAPEX原単価（600–1000 EUR/tpa）を用い、110,000 tpa × 800 EUR/tpa ≈ 88百万EURと推定。",
+    "estimation_method": "欧州の廃棄物発電プラントCAPEXの経験則レンジ（600–1000 EUR/tpa）とスケールに基づく中位値（800 EUR/tpa）による推算。参考：EU/SLR資料、専門サイトのCAPEX/容量換算。",
+    "confidence": 0.35,
+    "Subsidizer": "（参考）地域熱供給連系事業：Decreto Energia/PNRR等の支援（ネットワーク側の投資であり、発電プラント本体の建設補助ではない）",
+    "amount_subsidy": "約10–15.6百万EUR（報道・事業者情報、複数ロットの総額目安）"
+  },
+  "data_quality*": {
+    "last_compiled_date*": "2025-09-24",
+    "primary_year_of_stats*": "2024",
+    "notes": [
+      "R1（エネルギー効率）については“R1資格付与（回復）”の行政決定は確認できるが、数値（式に基づくR1値）は公表資料に見当たらず。",
+      "建設EPC/PMC・MVA定数等の詳細機器定格は公表不足。必要に応じてAIA技術付属書の詳細版や旧ACCAM資料の入手が必要。"
+    ]
+  },
+  "references*": [
+    {
+      "id*": "R1",
+      "title*": "Dichiarazione Ambientale EMAS (al 30/06/2024) – Neutalia S.r.l.",
+      "url*": "https://www.neutalia.it/sites/default/files/impianto/Dati-ambientali/DA%20NEUTALIA%20%282%29.pdf",
+      "cites*": [
+        "炉形式=移動式ストーカ（griglie mobili）、2ライン（pp.25, L695-L703; p.42 L1444-L1445）",
+        "所在地座標=45°36′50″N, 8°50′50″E（p.18 図5）→座標変換",
+        "プロセス概説、排ガス監視・運転体制（pp.25, 39-43 等）"
+      ]
+    },
+    {
+      "id*": "R2",
+      "title*": "Regione Lombardia – D.d.u.o. n. 7030 del 08/05/2024（AIA・全体見直し）",
+      "url*": "https://www.neutalia.it/sites/default/files/Chi-siamo/Certificazioni/Decreto.%20n.%207030%20del%2008.05.2024.pdf",
+      "cites*": [
+        "事業者名義・所在地（Strada Comunale per Arconate 121, Busto Arsizio）",
+        "AIAの最新化（BAT適合・審査経緯）"
+      ]
+    },
+    {
+      "id*": "R3",
+      "title*": "Neutalia – Cos’è e come funziona（事業者サイト・設備説明）",
+      "url*": "https://www.neutalia.it/node/29",
+      "cites*": [
+        "処理能力=最大110,000 t/年",
+        "発電=約10.2 MW、蒸気条件=380°C・40 bar"
+      ]
+    },
+    {
+      "id*": "R4",
+      "title*": "Comunicato stampa 2025-01-10：Qualifica R1（生産実績を含む）",
+      "url*": "https://www.neutalia.it/sites/default/files/Comunicati%20stampa/250110_Neutalia_R1.pdf",
+      "cites*": [
+        "2024年の発電量=55,142 MWh（前年比+27.7%）",
+        "R1（回復）資格の付与に言及"
+      ]
+    },
+    {
+      "id*": "R5",
+      "title*": "Neutalia – Relazione sulla gestione 2024（Bilancio 2024）",
+      "url*": "https://www.neutalia.it/sites/default/files/Neutalia%20-%20Relazione%20sulla%20gestione%202024.pdf",
+      "cites*": [
+        "発電量=55,142,300 kWh（2024）、kWh/ton=564（2024）",
+        "焼却量の棒グラフ=97.8 kton（2024）",
+        "各ラインの平均処理量（L1=177 t/日、L2=170 t/日、2024年）",
+        "R1資格の再付与日=2024-12-20（decreto n°20616）"
+      ]
+    },
+    {
+      "id*": "R6",
+      "title*": "Termovalorizzatore di Borsano, avviata anche la seconda turbina（2022-12-28）",
+      "url*": "https://www.neutalia.it/node/123",
+      "cites*": [
+        "2基目タービン復旧により“発電能力 11 MW”に到達（投資額=360万EUR）"
+      ]
+    },
+    {
+      "id*": "R7",
+      "title*": "Regione Lombardia – Impianti di termovalorizzazione di competenza regionale（Neutaliaページ）",
+      "url*": "https://www.regione.lombardia.it/wps/portal/istituzionale/HP/DettaglioRedazionale/servizi-e-informazioni/Imprese/Sicurezza-ambientale-e-alimentare/gestione-dei-rifiuti/impianti-di-termovalorizzazione-di-competenza-regionale/impianti-di-termovalorizzazione-di-competenza-regionale",
+      "cites*": [
+        "Neutalia/Borsanoの各種D.D.S./D.D.U.O.参照リスト（AIA関連史）"
+      ]
+    },
+    {
+      "id*": "R8",
+      "title*": "AGESP Energia – プレス/お知らせ：Busto Arsizioの地域熱供給網拡張とNeutalia接続計画",
+      "url*": "https://agespenergia.it/prende-forma-lo-sviluppo-del-teleriscaldamento-a-beneficio-delle-comunita-locali-di-busto-arsizio/",
+      "cites*": [
+        "AGESPとNeutaliaの連系事業（目的・進捗）",
+        "熱供給先となる地域熱供給網の運営主体"
+      ]
+    },
+    {
+      "id*": "R9",
+      "title*": "AMGA S.p.A. – Bilancio 2024（ネットワーク側の記載）",
+      "url*": "https://www.amga.it/sites/default/files/BILANCIO%20AMGA%202024.pdf",
+      "cites*": [
+        "Legnano側ネットワークとNeutalia（Borsano）接続工事の開始（2024年9月）、国費支援の趣旨"
+      ]
+    },
+    {
+      "id*": "R10",
+      "title*": "Malpensa24 – Teleriscaldamento（第2/第3ロット、投資規模10百万EUR等の報道）",
+      "url*": "https://www.malpensa24.it/teleriscaldamento-a-busto-ultimo-step-del-cantiere-via-piombina-chiude-2-mesi/",
+      "cites*": [
+        "Busto Arsizioの接続工事（第3ロット、総額約1,000万EUR、Decreto energia由来の財源言及）"
+      ]
+    },
+    {
+      "id*": "R11",
+      "title*": "Il Giorno – Teleriscaldamento da Borsano：15.6百万EUR確認（2024-04-10）",
+      "url*": "https://www.ilgiorno.it/legnano/cronaca/teleriscaldamento-da-borsano-confermati-i-156-milioni-via-agli-espropri-dei-terreni-9d545fb4",
+      "cites*": [
+        "連系プロジェクトへの公的資金規模（報道値）"
+      ]
+    },
+    {
+      "id*": "R12",
+      "title*": "欧州委員会報告 Annex E／SLR（2008）等：焼却発電CAPEX原単価（tpa換算）のスケール依存",
+      "url*": "https://ec.europa.eu/environment/pdf/waste/compost/ia_biowaste%20-%20ANNEX%20E%20%20-%20approach%20to%20costs.pdf",
+      "cites*": [
+        "CAPEX見積の方法論（tpa当たり費用、スケールによる変動）"
+      ]
+    },
+    {
+      "id*": "R13",
+      "title*": "WTE International – Cost of incineration plant（経験式・例示：680 USD/tpa等）",
+      "url*": "https://wteinternational.com/news/cost-of-incineration-plant/",
+      "cites*": [
+        "欧米の経験的CAPEXレンジの裏付け（推定根拠の外挿の一つとして利用）"
+      ]
+    }
+  ]
+}

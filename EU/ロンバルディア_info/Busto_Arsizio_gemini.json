@@ -1,0 +1,135 @@
+{
+  "facility": {
+    "name*": "Termovalorizzatore di Borsano",
+    "aliases": [
+      "Inceneritore di Borsano",
+      "Impianto di Busto Arsizio"
+    ],
+    "location*": {
+      "address*": "Strada Comunale Per Arconate n. 121, 21052 Busto Arsizio (VA), Italy",
+      "municipality*": "Busto Arsizio (VA)",
+      "coordinates": {
+        "lat": 45.5891,
+        "lon": 8.8255
+      }
+    },
+    "owner*": "Joint ownership by AGESP S.p.A., Gruppo AMGA S.p.A., Gruppo CAP, and ASM Azienda Speciale Multiservizi srl.",
+    "operator*": "NEUTALIA S.R.L. Società Benefit"
+  },
+  "contractors*": {
+    "pmc*": "Technital S.p.A. (Final design, Environmental Impact Assessment)",
+    "general_contractor": null,
+    "consortium_ati": null,
+    "architect": null,
+    "notes": [
+      "The plant was originally commissioned by the former operator, ACCAM S.p.A., in the early 2000s. The specific general contractor for the initial construction is not specified in the publicly available documents reviewed."
+    ]
+  },
+  "process*": {
+    "incineration_type*": "Moving grate (stoker), 2 lines",
+    "authorized_waste_throughput*": {
+      "total_tph": 42,
+      "total_tpd*": 1008
+    },
+    "generator_rating*": {
+      "apparent_power_MVA*": null,
+      "rated_power_MW": 11
+    },
+    "remarks": [
+      "The facility consists of two incineration lines, each with a capacity of 21 t/h.",
+      "The generator rating of 11 MW (2 x 5.5 MW) reflects the new turbines that became operational in December 2022 after a major revamping project."
+    ]
+  },
+  "annual_performance*": {
+    "waste_incinerated_tonnes*": null,
+    "electricity_generated*": {
+      "mwh*": 55142,
+      "kwh": 55142000
+    },
+    "heat_supplied*": {
+      "mwh": null,
+      "gj*": null
+    },
+    "avg_operational_assumption": {
+      "utilization_factor": null,
+      "operating_hours_per_year": null,
+      "implied_daily_throughput_tpd": null,
+      "energy_efficiency_R1": null
+    },
+    "year": 2024
+  },
+  "district_heating*": {
+    "operator*": null,
+    "recipients_examples*": [],
+    "notes": "There is no district heating network currently connected to the plant. However, future development plans include the creation of a district heating network for the municipalities of Busto Arsizio and Legnano."
+  },
+  "construction_total_cost*": {
+    "amount": 35000000,
+    "currency": "EUR",
+    "year_of_cost": null,
+    "notes": "This cost was reported by the design firm Technital for the initial plant construction. The specific reference year for this cost is not available.",
+    "estimation_method": "Value reported by project design company.",
+    "confidence": 0.5,
+    "Subsidizer": null,
+    "amount_subsidy": null
+  },
+  "data_quality*": {
+    "last_compiled_date*": "2024-05-16",
+    "primary_year_of_stats*": "2024",
+    "notes": [
+      "The specific R1 energy efficiency value is not publicly disclosed, although the facility has obtained the necessary certifications (EMAS registration IT-001859).",
+      "Information on the original general contractor, subsidies, and historical heat supply volumes could not be located in publicly available documentation.",
+      "Annual incinerated tonnage for the reference year was not available, preventing the calculation of the utilization factor."
+    ]
+  },
+  "references*": [
+    {
+      "id*": "R1",
+      "title*": "Neutalia S.r.l. - Official Website",
+      "url*": "https://www.neutalia.it/",
+      "cites*": [
+        "facility.operator",
+        "facility.owner",
+        "facility.location.address",
+        "data_quality.notes"
+      ]
+    },
+    {
+      "id*": "R2",
+      "title*": "Technital S.p.A. - Progetto: Waste to Energy Plant of Busto Arsizio - Italy",
+      "url*": "https://www.technital.net/projects/energy/waste-to-energy-plants/energia-waste-to-energy-plant-of-busto-arsizio-italy",
+      "cites*": [
+        "contractors.pmc",
+        "process.authorized_waste_throughput.total_tph",
+        "process.authorized_waste_throughput.total_tpd",
+        "construction_total_cost.amount"
+      ]
+    },
+    {
+      "id*": "R3",
+      "title*": "Neutalia, l'inceneritore di Borsano ha prodotto il 27,7% di energia in più",
+      "url*": "https://www.legnanonews.com/aree-geografiche/busto-arsizio/2024/02/07/neutalia-linceneritore-di-borsano-ha-prodotto-il-277-di-energia-in-piu/1188764/",
+      "cites*": [
+        "annual_performance.electricity_generated.mwh",
+        "annual_performance.year"
+      ]
+    },
+    {
+      "id*": "R4",
+      "title*": "Gruppo CAP - Consolidated financial statements as at 31 December 2023",
+      "url*": "https://www.gruppocap.it/content/dam/groupcap/assets/documents/documents-web/investor-relations/bilanci-cap-holding/2023/Consolidated%20financial%20statements%202023.pdf",
+      "cites*": [
+        "facility.owner"
+      ]
+    },
+    {
+      "id*": "R5",
+      "title*": "A Busto Arsizio ripartite le turbine del termovalorizzatore Neutalia - VareseNews",
+      "url*": "https://www.varesenews.it/2022/12/a-busto-arsizio-ripartite-le-turbine-del-termovalorizzatore-neutalia/1569476/",
+      "cites*": [
+        "process.generator_rating.rated_power_MW",
+        "process.remarks"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "facility": {
+    "name*": "Termoutilizzatore di Brescia",
+    "aliases": ["Termovalorizzatore di Brescia", "Inceneritore di Brescia", "Brescia Waste-to-Energy plant"],
+    "location*": {
+      "address*": "Via Malta 25, 25124 Brescia, Lombardia, Italy",
+      "municipality*": "Brescia (BS)",
+      "coordinates": {"lat": null, "lon": null}
+    },
+    "owner*": "A2A Ambiente S.p.A.",
+    "operator*": "A2A Ambiente S.p.A."
+  },
+  "contractors*": {
+    "pmc*": null,
+    "general_contractor": ["Ansaldo Industria S.p.A.", "Martin GmbH", "ABB SAE Sadelmi S.p.A."],
+    "consortium_ati": ["R.T.I. – Ansaldo Industria S.p.A., Martin GmbH, ABB SAE Sadelmi S.p.A."],
+    "architect": null,
+    "notes": ["Pagina di progetto (CREW – Cremonesi Workshop) riporta il raggruppamento e l’arco temporale 1996–2006."]
+  },
+  "process*": {
+    "incineration_type*": "Moving grate (forno a griglia mobile), 3 linee",
+    "authorized_waste_throughput*": {
+      "total_tph": 90,
+      "total_tpd*": 2160
+    },
+    "generator_rating*": {
+      "apparent_power_MVA*": null,
+      "rated_power_MW": 85
+    },
+    "remarks": [
+      "Capacità 90 t/h nominali su 3 linee (fonte progetto). Il valore t/giorno è calcolato come 90×24=2160 t/day.",
+      "Indirizzo, EMAS e dati IPPC confermano sito e tecnologia a griglia mobile."
+    ]
+  },
+  "performance_2022*": {
+    "waste_incinerated_tonnes*": 703000,
+    "electricity_generated*": {
+      "mwh*": 558000,
+      "kwh": 558000000
+    },
+    "heat_supplied*": {
+      "mwh": 810000,
+      "gj*": 2916000
+    },
+    "avg_operational_assumption": {
+      "utilization_factor": 0.892,
+      "operating_hours_per_year": 7811,
+      "implied_daily_throughput_tpd": 1926.03
+    }
+  },
+  "district_heating*": {
+    "operator*": "A2A Calore e Servizi S.r.l.",
+    "recipients_examples*": ["Brescia市の地域熱供給ネットワークの加入者（住宅・公共施設・商業施設）", "市内の建物の70%以上がネットワークに接続"]
+  },
+  "construction_total_cost*": {
+    "amount": 256600000,
+    "currency": "EUR",
+    "year_of_cost": 1998,
+    "notes": "初期建設コストは公表値を確認できず。大型WTEの投資係数（230百万LIT/日t）×推定設計能力2160 t/day＝約4.968×10^11 LIT ≒ 2.566×10^8 EUR（1 EUR=1936.27 LIT換算）。その後の改修として排ガス系等の改良投資約1.10億EUR（2024年）が別途報じられている。",
+    "estimation_method": "文献の投資単価レンジ（大型プラントで約230百万LIT/t/day）を適用し、CREW掲載の設計能力90 t/h（=2160 t/day）から算定。リラ→ユーロは固定レート1936.27で換算。",
+    "confidence": 0.4
+  },
+  "data_quality*": {
+    "last_compiled_date*": "2025-09-23",
+    "primary_year_of_stats*": "2022",
+    "notes": [
+      "2022年の電力・熱量は市のオブザーバトリ報告から。廃棄物量（703千t）は報道・広報資料で複数一致（近接値）。",
+      "MVAは公開原典未確認のためnull。",
+      "座標は一次情報源に未記載のためnull。"
+    ]
+  },
+  "references*": [
+    {
+      "id*": "R1",
+      "title*": "Termovalorizzatore di Brescia – Sito ufficiale A2A",
+      "url*": "https://www.gruppoa2a.it/it/chi-siamo/nostri-impianti/ciclo-rifiuti/termovalorizzatori/termovalorizzatore-brescia",
+      "cites*": ["process.incineration_type*", "process.remarks", "district_heating.recipients_examples*", "process.generator_rating.rated_power_MW（補助的）"]
+    },
+    {
+      "id*": "R2",
+      "title*": "Termoutilizzatore di Brescia — EMAS/ISPRA（scheda sito）",
+      "url*": "https://www.isprambiente.gov.it/it/attivita/certificazioni/emas/siti/termoutilizzatore-di-brescia",
+      "cites*": ["facility.location.address*", "facility.location.municipality*", "facility.owner*", "facility.operator*", "process.incineration_type*（間接的に施設性格を裏付け）"]
+    },
+    {
+      "id*": "R3",
+      "title*": "Rapporto dell’Osservatorio sul funzionamento del Termoutilizzatore di Brescia – anni 2021–2022（Comune di Brescia）",
+      "url*": "https://www.comune.brescia.it/sites/default/files/2023-12/Rapporto%20dell%27Osservatorio%20sul%20funzionamento%20del%20termoutilizzatore%20di%20Brescia%20relativo%C2%A0%20agli%20anni%202021_2022.pdf",
+      "cites*": ["performance_2022.electricity_generated.mwh*", "performance_2022.heat_supplied.mwh", "process.remarks（3ライン運転や工程説明）"]
+    },
+    {
+      "id*": "R4",
+      "title*": "Venticinque anni di termovalorizzatore: impianto più efficiente…（Corriere di Brescia, 21/12/2023）",
+      "url*": "https://brescia.corriere.it/notizie/cronaca/23_dicembre_21/venticinque-anni-di-termovalorizzatore-impianto-piu-efficiente-e-con-meno-scorie-c08f1712-411d-4e05-968f-0e8cac55dxlk.shtml",
+      "cites*": ["performance_2022.waste_incinerated_tonnes*", "performance_2022.electricity_generated.mwh*", "performance_2022.heat_supplied.mwh"]
+    },
+    {
+      "id*": "R5",
+      "title*": "Termovalorizzatore Brescia – scheda progetto（CREW – Cremonesi Workshop）",
+      "url*": "https://www.crew.it/it/projects/waste-energy-plant-solid-urban-waste",
+      "cites*": ["contractors.general_contractor", "contractors.consortium_ati", "process.authorized_waste_throughput.total_tph", "process.authorized_waste_throughput.total_tpd*"]
+    },
+    {
+      "id*": "R6",
+      "title*": "Identificazione del Complesso IPPC – Decreto TU 1494 del 25/02/2014（Comune di Brescia）",
+      "url*": "https://www.comune.brescia.it/servizi/ambienteeverde/Ambiente/Documents/Osservatori/Osservatorio%20TERMOUTILIZZATORE/A2A%20decreto%20TU%201494%20del%2025-02-2014.pdf",
+      "cites*": ["process.incineration_type*（\"forno a griglia mobile\"の明記）", "facility.operator*（運転主体の確認）", "facility.location（サイト確認）"]
+    },
+    {
+      "id*": "R7",
+      "title*": "Brescia Waste-to-Energy power station – GEM.wiki",
+      "url*": "https://www.gem.wiki/Brescia_Waste-to-Energy_power_station",
+      "cites*": ["process.generator_rating.rated_power_MW"]
+    },
+    {
+      "id*": "R8",
+      "title*": "Impianti e reti a Brescia（A2A Calore e Servizi）",
+      "url*": "https://www.a2acaloreservizi.it/it/servizi/produzione-energia-termica/impianti-reti/brescia",
+      "cites*": ["district_heating.operator*", "district_heating.recipients_examples*（>70%接続の記述）"]
+    },
+    {
+      "id*": "R9",
+      "title*": "Italian utility A2A starts scheme to cut emissions in Brescia（Reuters, 26/02/2024）",
+      "url*": "https://www.reuters.com/sustainability/climate-energy/italian-utility-a2a-starts-scheme-cut-emissions-northern-city-brescia-2024-02-26/",
+      "cites*": ["construction_total_cost.notes（2024年の110百万EURの改修投資に関する参照）"]
+    },
+    {
+      "id*": "R10",
+      "title*": "Panizza（Medicina Democratica, 2009）資料抜粋：投資単価（LIT/t/day）レンジ",
+      "url*": "https://www.medicinademocratica.org/IMG/pdf/LUCIDI_PANIZZA_BRESCIA.pdf",
+      "cites*": ["construction_total_cost.estimation_method", "construction_total_cost.amount", "construction_total_cost.notes"]
+    }
+  ]
+}
